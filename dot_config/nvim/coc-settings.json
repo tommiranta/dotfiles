@@ -1,0 +1,51 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "go",
+    "json",
+    "jsonc",
+    "markdown",
+    "python",
+    "yaml"
+  ],
+
+  "jedi.jediSettings.debug": true,
+  "jedi.diagnostics.enable": false,
+
+  "diagnostic-languageserver.mergeConfig": true,
+  "diagnostic-languageserver.trace.server": "verbose",
+  "diagnostic-languageserver.filetypes": {
+    "cmake": ["cmake-lint", "cmakelint"],
+    "go": "revive",
+    "json": "prettier",
+    "markdown": ["write-good", "markdownlint", "languagetool"],
+    "python": "flake8",
+    "sh": "shellcheck",
+    "vim": "vint",
+    "yaml": "yamllint"
+  },
+  "diagnostic-languageserver.linters": {
+    "flake8": {
+      "args": [
+        "--max-line-length=88",
+        "--ignore=E203,W503",
+        "--format=%(row)d,%(col)d,%(code).1s,%(code)s: %(text)s",
+        "-"
+      ]
+    }
+  },
+  "diagnostic-languageserver.formatFiletypes": {
+    "cmake": "cmake-format",
+    "go": "gofmt",
+    "python": ["black", "isort", "docformatter"],
+    "sh": "shfmt",
+    "terraform": "tffmt"
+  },
+  "diagnostic-languageserver.formatters": {
+    "docformatter": {
+      "command": "docformatter",
+      "args": ["-"]
+    }
+  },
+
+  "git.enableGutters": false
+}
