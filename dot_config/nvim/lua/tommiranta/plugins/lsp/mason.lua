@@ -24,9 +24,7 @@ mason_lspconfig.setup({
 	ensure_installed = {
 		"gopls",
 		"pyright",
-		"jsonls",
-		"marksman",
-		"sumneko_lua",
+		"lua_ls",
 		"terraformls",
 	},
 	-- auto-install configured servers (with lspconfig)
