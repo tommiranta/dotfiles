@@ -16,7 +16,7 @@ null_ls.setup({
 	-- setup formatters & linters
 	sources = {
 		-- go
-		diagnostics.golangci_lint,
+		-- diagnostics.golangci_lint,
 		formatting.gofmt,
 		formatting.goimports,
 		formatting.golines,
@@ -33,11 +33,8 @@ null_ls.setup({
 		-- sql
 		diagnostics.sqlfluff,
 		formatting.sqlfluff,
-		-- shell and make
-		diagnostics.checkmake,
-		formatting.beautysh,
 		-- lua
-		diagnostics.luacheck,
+		-- diagnostics.luacheck,
 		formatting.stylua,
 		-- json, yaml, markdown
 		diagnostics.jsonlint,

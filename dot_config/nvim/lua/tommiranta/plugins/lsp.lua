@@ -1,4 +1,3 @@
-
 local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
@@ -9,61 +8,97 @@ lsp.preset("recommended")
 -- })
 
 -- Fix Undefined global 'vim'
-lsp.configure('lua-language-server', {
+lsp.configure("lua-language-server", {
     settings = {
         Lua = {
             diagnostics = {
-                globals = { 'vim' }
-            }
-        }
-    }
+                globals = { "vim" },
+            },
+        },
+    },
 })
 
-
-local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local lspkind = require("lspkind")
+local cmp = require("cmp")
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-  ["<C-Space>"] = cmp.mapping.complete(),
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ["<C-k>"] = cmp.mapping.select_prev_item(cmp_select),
+    ["<C-j>"] = cmp.mapping.select_next_item(cmp_select),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    ["<C-Space>"] = cmp.mapping.complete(),
 })
 
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
+cmp_mappings["<Tab>"] = nil
+cmp_mappings["<S-Tab>"] = nil
 
 lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
+    mapping = cmp_mappings,
+    sources = {
+        { name = "path" },
+        { name = "nvim_lsp" },
+        { name = "buffer",  keyword_length = 3 },
+        { name = "luasnip", keyword_length = 2 },
+    },
+    formatting = {
+        format = lspkind.cmp_format({
+            maxwidth = 50,
+            ellipsis_char = "...",
+        }),
+    },
 })
 
 lsp.set_preferences({
     suggest_lsp_servers = false,
     sign_icons = {
-        error = ' ',
-        warn = ' ',
-        hint = 'ﴞ ',
-        info = ' '
-    }
+        error = " ",
+        warn = " ",
+        hint = "ﴞ ",
+        info = " ",
+    },
 })
 
 lsp.on_attach(function(client, bufnr)
-  local opts = {buffer = bufnr, remap = false}
+    local opts = { buffer = bufnr, remap = false }
 
-  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-  vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-  vim.keymap.set("n", "<leader>ws", function() vim.lsp.buf.workspace_symbol() end, opts)
-  vim.keymap.set("n", "<leader>d", function() vim.diagnostic.open_float() end, opts)
-  vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, opts)
-  vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, opts)
-  vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
-  vim.keymap.set("n", "<leader>rr", function() vim.lsp.buf.references() end, opts)
-  vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
-  vim.keymap.set("i", "<leader>sh", function() vim.lsp.buf.signature_help() end, opts)
-  vim.keymap.set("n", "<leader>fd", function() vim.lsp.buf.format({ async = true }) end, opts)
+    vim.keymap.set("n", "gd", function()
+        vim.lsp.buf.definition()
+    end, opts)
+    vim.keymap.set("n", "K", function()
+        vim.lsp.buf.hover()
+    end, opts)
+    vim.keymap.set("n", "<leader>ws", function()
+        vim.lsp.buf.workspace_symbol()
+    end, opts)
+    vim.keymap.set("n", "<leader>d", function()
+        vim.diagnostic.open_float()
+    end, opts)
+    vim.keymap.set("n", "]d", function()
+        vim.diagnostic.goto_next()
+    end, opts)
+    vim.keymap.set("n", "[d", function()
+        vim.diagnostic.goto_prev()
+    end, opts)
+    vim.keymap.set("n", "<leader>ca", function()
+        vim.lsp.buf.code_action()
+    end, opts)
+    vim.keymap.set("n", "<leader>rr", function()
+        vim.lsp.buf.references()
+    end, opts)
+    vim.keymap.set("n", "<leader>rn", function()
+        vim.lsp.buf.rename()
+    end, opts)
+    vim.keymap.set("i", "<leader>sh", function()
+        vim.lsp.buf.signature_help()
+    end, opts)
+    vim.keymap.set("n", "<leader>fd", function()
+        vim.lsp.buf.format({ async = true })
+    end, opts)
 end)
 
 lsp.setup()
 
 vim.diagnostic.config({
-    virtual_text = true
+    virtual_text = true,
 })
