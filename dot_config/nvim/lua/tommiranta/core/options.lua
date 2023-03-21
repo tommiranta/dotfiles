@@ -19,7 +19,7 @@ opt.wrap = false
 -- search settings
 opt.ignorecase = true
 opt.smartcase = true
-opt.hlsearch = false
+opt.hlsearch = true
 opt.incsearch = true
 
 -- cursor line
