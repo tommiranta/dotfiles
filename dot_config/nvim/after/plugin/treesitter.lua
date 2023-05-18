@@ -1,16 +1,4 @@
--- import nvim-treesitter plugin safely
-local status, treesitter = pcall(require, "nvim-treesitter.configs")
-if not status then
-	return
-end
-
-local status, treesitter_context = pcall(require, "treesitter-context")
-if not status then
-	return
-end
-
--- configure treesitter
-treesitter.setup({
+require("nvim-treesitter.configs").setup({
 	-- enable syntax highlighting
 	highlight = {
 		enable = true,
@@ -33,13 +21,15 @@ treesitter.setup({
 		"markdown",
 		"make",
 		"vim",
-		"scala",
+		"lua",
+		"rust",
+		"toml",
 	},
 	-- auto install above language parsers
 	auto_install = true,
 })
 
-treesitter_context.setup({
+require("treesitter-context").setup({
 	enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
 	max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
 	trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'

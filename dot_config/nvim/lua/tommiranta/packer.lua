@@ -11,23 +11,7 @@ local ensure_packer = function()
 end
 local packer_bootstrap = ensure_packer() -- true if packer was just installed
 
--- autocommand that reloads neovim and installs/updates/removes plugins
--- when file is saved
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins-setup.lua source <afile> | PackerSync
-  augroup end
-]])
-
--- import packer safely
-local status, packer = pcall(require, "packer")
-if not status then
-	return
-end
-
--- add list of plugins to install
-return packer.startup(function(use)
+return require("packer").startup(function(use)
 	-- packer can manage itself
 	use("wbthomason/packer.nvim")
 
@@ -75,9 +59,6 @@ return packer.startup(function(use)
 
 	-- REST client
 	use("diepm/vim-rest-console")
-
-	-- cheat.sh integration
-	use("dbeniamine/cheat.sh-vim")
 
 	use({
 		"VonHeikemen/lsp-zero.nvim",
@@ -132,25 +113,12 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- highlight and search for todo comments
-	use({
-		"folke/todo-comments.nvim",
-		requires = "nvim-lua/plenary.nvim",
-		config = function()
-			require("todo-comments").setup({
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
-		end,
-	})
-
 	-- A pretty list for showing diagnostics, references etc.
 	use({
 		"folke/trouble.nvim",
-		requires = "nvim-tree/nvim-web-devicons",
 		config = function()
 			require("trouble").setup({
+				icons = false,
 				-- your configuration comes here
 				-- or leave it empty to use the default settings
 				-- refer to the configuration section below

@@ -33,7 +33,7 @@ vim.keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>")
 -- find string under cursor in current working directory
 vim.keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>")
 -- list open buffers in current neovim instance
-vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
+vim.keymap.set("n", "<leader>b", "<cmd>Telescope buffers<cr>")
 -- list available help tags
 vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
 

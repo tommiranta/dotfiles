@@ -26,6 +26,7 @@ mason_lspconfig.setup({
 		"pyright",
 		"lua_ls",
 		"terraformls",
+		"rust_analyzer",
 	},
 	-- auto-install configured servers (with lspconfig)
 	automatic_installation = true, -- not the same as ensure_installed
@@ -44,6 +45,8 @@ mason_null_ls.setup({
 		"pydocstyle",
 		"isort",
 		"black",
+		-- rust
+		"rustfmt",
 		-- sql
 		"sqlfluff",
 		-- lua
