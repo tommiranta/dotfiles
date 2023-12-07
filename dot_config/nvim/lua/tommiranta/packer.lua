@@ -105,7 +105,7 @@ return require("packer").startup(function(use)
 	use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
 
 	-- go
-	use("fatih/vim-go")
+	-- use("fatih/vim-go")
 
 	-- treesitter configuration
 	use({

@@ -16,6 +16,7 @@ export PATH="/usr/local/opt/scala@2.12/bin:$PATH"
 export PATH="~/Library/Application Support/Coursier/bin:$PATH"
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
+export PATH="${PATH}:${HOME}/.krew/bin"
 
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Projects

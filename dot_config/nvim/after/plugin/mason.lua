@@ -22,7 +22,7 @@ mason.setup()
 mason_lspconfig.setup({
 	-- list of servers for mason to install
 	ensure_installed = {
-		-- "gopls",
+		"gopls",
 		"pyright",
 		"lua_ls",
 		"terraformls",
@@ -36,10 +36,10 @@ mason_null_ls.setup({
 	-- list of formatters & linters for mason to install
 	ensure_installed = {
 		-- go
-		-- "golangci_lint",
-		-- "gofmt",
-		-- "goimports",
-		-- "golines",
+		"golangci_lint",
+		"gofmt",
+		"goimports",
+		"golines",
 		-- python
 		"flake8",
 		"pydocstyle",
