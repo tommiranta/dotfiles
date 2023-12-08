@@ -1,0 +1,9 @@
+[user]
+	name = Tommi Ranta
+	email = tommi.ranta@dealfront.com
+
+[github]
+    user = "tommi-ranta_dft"
+ 
+[core]
+    sshCommand = "ssh -i ~/.ssh/dealfront_ghe"

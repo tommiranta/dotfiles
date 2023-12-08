@@ -1,0 +1,17 @@
+[includeIf "gitdir:~/Projects/leadfeeder/"] # include for all .git projects under personnal/ 
+    path = ~/.gitconfig-work
+ 
+[includeIf "gitdir:~/Projects/personal/"]
+    path = ~/.gitconfig-personal
+
+[includeIf "gitdir:~/.local/share/chezmoi/"]
+    path = ~/.gitconfig-personal
+
+[pull]
+	rebase = false
+[pager]
+	branch = false
+[alias]
+	lgb = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches
+[commit]
+	gpgsign = true

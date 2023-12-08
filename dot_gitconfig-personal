@@ -1,0 +1,10 @@
+[user]
+	name = tommiranta
+	email = tommi.ranta@leadfeeder.com
+	signingkey = 997152947C9EFECF
+
+[core]
+    sshCommand = "ssh -i ~/.ssh/id_github"
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
