@@ -1,11 +1,11 @@
-[includeIf "gitdir:~/Projects/leadfeeder/"] # include for all .git projects under personnal/ 
-    path = ~/.gitconfig-work
- 
-[includeIf "gitdir:~/Projects/personal/"]
+[includeIf "gitdir:~/"]
     path = ~/.gitconfig-personal
 
-[includeIf "gitdir:~/.local/share/chezmoi/"]
-    path = ~/.gitconfig-personal
+[includeIf "gitdir:~/Projects/leadfeeder/"]
+    path = ~/.gitconfig-work
+
+; [includeIf "hasconfig:remote.upstream.url:**org-151519473@github.com"]
+;     path = ~/.gitconfig-work
 
 [pull]
 	rebase = false

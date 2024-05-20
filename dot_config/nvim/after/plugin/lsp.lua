@@ -18,7 +18,42 @@ lsp.configure("lua-language-server", {
 	},
 })
 
+local check_backspace = function()
+	local col = vim.fn.col(".") - 1
+	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+end
+
+local kind_icons = {
+	Text = "󰊄",
+	Method = "󰊕",
+	Function = "󰊕",
+	Constructor = "",
+	Field = "",
+	Variable = "󰫧",
+	Class = "",
+	Interface = "",
+	Module = "",
+	Property = "",
+	Unit = "",
+	Value = "",
+	Enum = "",
+	Keyword = "",
+	Snippet = "",
+	Color = "",
+	File = "",
+	Reference = "",
+	Folder = "",
+	EnumMember = "",
+	Constant = "",
+	Struct = "",
+	Event = "",
+	Operator = "",
+	TypeParameter = "",
+	Copilot = "",
+}
+
 local lspkind = require("lspkind")
+local luasnip = require("luasnip")
 local cmp = require("cmp")
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -28,31 +63,71 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 	["<C-j>"] = cmp.mapping.select_next_item(cmp_select),
 	["<CR>"] = cmp.mapping.confirm({ select = true }),
 	["<C-Space>"] = cmp.mapping.complete(),
-	["<C-c>"] = function(fallback)
+	["<C-c>"] = cmp.mapping({
+		i = cmp.mapping.abort(),
+		c = cmp.mapping.close(),
+	}),
+	["<Tab>"] = cmp.mapping(function(fallback)
 		if cmp.visible() then
-			cmp.mapping.close()
+			cmp.select_next_item()
+		elseif require("copilot.suggestion").is_visible() then
+			require("copilot.suggestion").accept()
+		elseif luasnip.expandable() then
+			luasnip.expand()
+		elseif luasnip.expand_or_jumpable() then
+			luasnip.expand_or_jump()
+		elseif check_backspace() then
+			fallback()
 		else
 			fallback()
 		end
-	end,
+	end, {
+		"i",
+		"s",
+	}),
+	["<S-Tab>"] = cmp.mapping(function(fallback)
+		if cmp.visible() then
+			cmp.select_prev_item()
+		elseif luasnip.jumpable(-1) then
+			luasnip.jump(-1)
+		else
+			fallback()
+		end
+	end, {
+		"i",
+		"s",
+	}),
 })
 
-cmp_mappings["<Tab>"] = nil
-cmp_mappings["<S-Tab>"] = nil
-
 lsp.setup_nvim_cmp({
+	snippet = {
+		expand = function(args)
+			luasnip.lsp_expand(args.body) -- For `luasnip` users.
+		end,
+	},
 	mapping = cmp_mappings,
 	sources = {
+		{ name = "copilot" },
 		{ name = "path" },
 		{ name = "nvim_lsp" },
 		{ name = "buffer", keyword_length = 3 },
 		{ name = "luasnip", keyword_length = 2 },
 	},
 	formatting = {
-		format = lspkind.cmp_format({
-			maxwidth = 50,
-			ellipsis_char = "...",
-		}),
+		fields = { "kind", "abbr", "menu" },
+		format = function(entry, vim_item)
+			-- Kind icons
+			vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+			-- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+			vim_item.menu = ({
+				nvim_lsp = "[LSP]",
+				luasnip = "[Snippet]",
+				buffer = "[Buffer]",
+				path = "[Path]",
+				copilot = "[Copilot]",
+			})[entry.source.name]
+			return vim_item
+		end,
 	},
 })
 

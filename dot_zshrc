@@ -97,6 +97,9 @@ else
    export EDITOR='nvim'
 fi
 
+# ruby
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
