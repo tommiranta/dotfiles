@@ -1,3 +1,6 @@
+-- disable logging
+vim.lsp.set_log_level("off")
+
 local lsp = require("lsp-zero")
 
 lsp.preset("recommended")

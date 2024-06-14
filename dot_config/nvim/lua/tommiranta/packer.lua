@@ -110,7 +110,10 @@ return require("packer").startup(function(use)
 		cmd = "Copilot",
 		event = "InsertEnter",
 		config = function()
-			require("copilot").setup({})
+			require("copilot").setup({
+				suggestion = { enabled = false },
+				panel = { enabled = false },
+			})
 		end,
 	})
 	use({
@@ -118,6 +121,25 @@ return require("packer").startup(function(use)
 		after = { "copilot.lua" },
 		config = function()
 			require("copilot_cmp").setup()
+		end,
+	})
+	use({
+		"CopilotC-Nvim/CopilotChat.nvim",
+		requires = {
+			{ "zbirenbaum/copilot.lua" },
+			{ "nvim-lua/plenary.nvim" },
+		},
+		config = function()
+			require("CopilotChat").setup({
+				auto_insert_mode = true,
+				context = "buffers",
+				mappings = {
+					reset = {
+						normal = "<C-r>",
+						insert = "<C-r>",
+					},
+				},
+			})
 		end,
 	})
 

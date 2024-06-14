@@ -81,6 +81,12 @@ plugins=(
 
 SHOW_AWS_PROMPT=false
 
+# Fix resolving the main branch
+function git_main_branch() {
+  def=`git remote show origin | sed -n '/HEAD branch/s/.*: //p'`
+  echo $def
+}
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
