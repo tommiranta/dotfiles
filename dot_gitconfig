@@ -1,8 +1,11 @@
-[includeIf "gitdir:~/"]
+[includeIf "gitdir:/Users/tranta/Projects/leadfeeder/"]
+    path = ~/.gitconfig-work
+
+[includeIf "gitdir:/Users/tranta/.local/share/chezmoi/"]
     path = ~/.gitconfig-personal
 
-[includeIf "gitdir:~/Projects/leadfeeder/"]
-    path = ~/.gitconfig-work
+[includeIf "gitdir:/Users/tranta/"]
+    path = ~/.gitconfig-personal
 
 ; [includeIf "hasconfig:remote.upstream.url:**org-151519473@github.com"]
 ;     path = ~/.gitconfig-work
