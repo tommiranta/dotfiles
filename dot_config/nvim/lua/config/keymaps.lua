@@ -37,5 +37,5 @@ vim.keymap.set("n", "<C-\\>", ":NvimTmuxNavigateLastActive<CR>")
 vim.keymap.set("n", "<C-Space>", ":NvimTmuxNavigateNext<CR>")
 
 -- add newlines above and below
-vim.keymap.set("n", "[o", "O<ESC>j", { desc = "Add newline above" })
-vim.keymap.set("n", "]o", "o<ESC>k", { desc = "Add newline below" })
+vim.keymap.set("n", "[<Space>", "O<ESC>j", { desc = "Add newline above" })
+vim.keymap.set("n", "]<Space>", "o<ESC>k", { desc = "Add newline below" })
