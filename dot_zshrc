@@ -118,3 +118,7 @@ source /usr/local/opt/chruby/share/chruby/chruby.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# add to ~/.bashrc or ~/.zshrc (depends on your setup)
+export TENV_AUTO_INSTALL=true
+export TF_PLUGIN_CACHE_DIR=~/.terraform.d/plugin-cache
+export TF_PLUGIN_CACHE_MAY_BREAK_DEPENDENCY_LOCK_FILE=true
