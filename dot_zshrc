@@ -81,12 +81,6 @@ plugins=(
 
 SHOW_AWS_PROMPT=false
 
-# Fix resolving the main branch
-function git_main_branch() {
-  def=`git remote show origin | sed -n '/HEAD branch/s/.*: //p'`
-  echo $def
-}
-
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -103,9 +97,6 @@ else
    export EDITOR='nvim'
 fi
 
-# ruby
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -118,7 +109,3 @@ source /usr/local/opt/chruby/share/chruby/chruby.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# add to ~/.bashrc or ~/.zshrc (depends on your setup)
-export TENV_AUTO_INSTALL=true
-export TF_PLUGIN_CACHE_DIR=~/.terraform.d/plugin-cache
-export TF_PLUGIN_CACHE_MAY_BREAK_DEPENDENCY_LOCK_FILE=true
