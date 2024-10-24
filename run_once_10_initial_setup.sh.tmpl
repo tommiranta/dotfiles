@@ -1,0 +1,28 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+
+if [[ $(command -v brew) == "" ]]; then
+  echo "Installing brew"
+  # Install Homebrew
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  echo >>$HOME/.zprofile
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >>$HOME/.zprofileZ
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+  echo "Updating brew"
+  brew update
+fi
+
+
+if [[ -d $HOME/.oh-my-zsh/.git ]]; then
+  echo "Skipping omz"
+else
+  echo "Installing omz"
+  install oh-my-zsh, requires temporary deletion of config from dotfile
+  rm -rf $HOME/.oh-my-zsh
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  chezmoi apply $HOME/.oh-my-zsh --force
+fi
+
+{{ end -}}
