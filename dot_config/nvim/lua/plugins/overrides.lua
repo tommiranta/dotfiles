@@ -8,4 +8,17 @@ return {
       },
     },
   },
+
+  -- file explorer
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    keys = {
+      { "-", "<leader>fE", desc = "Explorer NeoTree (cwd)", remap = true },
+    },
+    opts = {
+      window = {
+        position = "float",
+      },
+    },
+  },
 }
