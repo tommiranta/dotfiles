@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ARCH="{{ .arch }}"
+ARCH="{{ .chezmoi.arch }}"
 COMPUTER_NAME=$(scutil --get ComputerName)
 
 if [[ "$ARCH" == "arm64" ]]; then
