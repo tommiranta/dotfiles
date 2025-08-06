@@ -5,6 +5,7 @@ autoload -Uz compinit && compinit
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
@@ -39,3 +40,4 @@ function git_main_branch() {
   echo $def
 }
 
+source virtualenvwrapper.sh

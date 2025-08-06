@@ -24,9 +24,9 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.coding.copilot" },
     --lang
     { import = "lazyvim.plugins.extras.lang.go" },
+    { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.lang.markdown" },
     { import = "lazyvim.plugins.extras.lang.python" },
-    { import = "lazyvim.plugins.extras.lang.ruby" },
     { import = "lazyvim.plugins.extras.lang.terraform" },
     -- ui
     { import = "lazyvim.plugins.extras.ui.treesitter-context" },

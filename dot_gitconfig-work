@@ -1,6 +1,7 @@
 [user]
 	name = Tommi Ranta
 	email = tommi.ranta@dealfront.com
+  signingkey = 6050A765738DF89123B00D5FCAE316A66BC962AF
 
 [github]
     user = "tommi-ranta_dft"
