@@ -1,9 +1,10 @@
 {{- if eq .chezmoi.os "darwin" -}}
 #!/bin/bash
 
-brew bundle --no-lock --file=/dev/stdin <<EOF
+brew bundle --file=/dev/stdin <<EOF
 brew "apache-arrow-glib"
 brew "apache-spark"
+brew "azcopy"
 brew "automake"
 brew "aws-sam-cli"
 brew "chezmoi"
@@ -82,5 +83,8 @@ else
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm/
   tmux source ~/.tmux.conf
 fi
+
+curl -LsSf https://astral.sh/uv/install.sh | sh
+npm install -g @anthropic-ai/claude-code
 
 {{ end -}}
