@@ -11,9 +11,6 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="${PATH}:${HOME}/.krew/bin"
 
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Projects
-
 # pipx
 export PATH="$PATH:/Users/tranta/.local/bin"
 autoload -U bashcompinit
@@ -39,5 +36,9 @@ function git_main_branch() {
   def=`git remote show origin | sed -n '/HEAD branch/s/.*: //p'`
   echo $def
 }
-
-source virtualenvwrapper.sh
+#
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/tranta/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
