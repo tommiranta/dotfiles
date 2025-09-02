@@ -4,6 +4,9 @@
 [includeIf "gitdir:~/Projects/leadfeeder/"]
     path = ~/.gitconfig-work
 
+[includeIf "gitdir:~/Code"]
+    path = ~/.gitconfig-work
+
 [pull]
 	rebase = false
 [pager]
