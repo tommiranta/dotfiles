@@ -13,5 +13,10 @@
 	branch = false
 [alias]
 	lgb = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches
+
+  au = "!f() { \
+        repo=$(basename `git rev-parse --show-toplevel`); \
+        git remote add upstream org-151519473@github.com:dft-main/${repo}.git; \
+    }; f"
 [commit]
 	gpgsign = true
