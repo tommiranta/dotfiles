@@ -76,7 +76,6 @@ plugins=(
   common-aliases
   macos
   tmux
-  virtualenvwrapper
 )
 
 SHOW_AWS_PROMPT=false
