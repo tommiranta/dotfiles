@@ -18,7 +18,6 @@ bashcompinit
 
 # aliases
 alias curl='noglob curl'
-alias python=python3
 
 # ruby
 source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh

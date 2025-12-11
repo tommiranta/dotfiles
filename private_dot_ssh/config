@@ -1,3 +1,10 @@
+Host github-personal
+  HostName github.com
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/id_github
+
 Host df-github
   HostName github.com
   AddKeysToAgent yes
@@ -8,4 +15,6 @@ Host github.com
   HostName github.com
   AddKeysToAgent yes
   UseKeychain yes
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/dealfront_ghe
   IdentityFile ~/.ssh/id_github
