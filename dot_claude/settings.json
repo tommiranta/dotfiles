@@ -1,29 +1,4 @@
 {
-  "hooks": {
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/tranta/.local/bin/notify 'Claude Code' 'Ready for input'"
-          }
-        ]
-      }
-    ],
-    "Notification": [
-      {
-        "matcher": "permission_prompt",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/tranta/.local/bin/notify 'Claude Code' 'Permission needed'"
-          }
-        ]
-      }
-    ]
-  },
-  "alwaysThinkingEnabled": true,
-  "preferredNotifChannel": "terminal_bell",
   "permissions": {
     "allow": [
       "Read",
@@ -36,13 +11,9 @@
       "AskUserQuestion",
       "EnterPlanMode",
       "TodoWrite",
-
       "mcp__linear__*",
       "mcp__notion__*",
-
-      "Bash(/Users/tranta/.local/bin/notify *)",
       "Bash(claude config *)",
-
       "Bash(git status *)",
       "Bash(git status)",
       "Bash(git diff *)",
@@ -67,7 +38,6 @@
       "Bash(git config --get *)",
       "Bash(git fetch *)",
       "Bash(git fetch)",
-
       "Bash(gh pr view *)",
       "Bash(gh pr view)",
       "Bash(gh pr list *)",
@@ -93,7 +63,6 @@
       "Bash(gh repo view)",
       "Bash(gh release list *)",
       "Bash(gh release list)",
-
       "Bash(ls *)",
       "Bash(ls)",
       "Bash(la *)",
@@ -108,18 +77,15 @@
       "Bash(stat *)",
       "Bash(du *)",
       "Bash(df *)",
-
       "Bash(uname *)",
       "Bash(pwd)",
       "Bash(printenv *)",
       "Bash(env | *)",
       "Bash(date *)",
       "Bash(whoami)",
-
       "Bash(jq *)",
       "Bash(yq *)",
       "Bash(bat *)",
-
       "Bash(python3 --version *)",
       "Bash(python3 --version)",
       "Bash(python3 -V *)",
@@ -140,7 +106,6 @@
       "Bash(uv sync *)",
       "Bash(uv sync)",
       "Bash(uv add *)",
-
       "Bash(uv run dbt *)",
       "Bash(uv run dbt run *)",
       "Bash(uv run dbt test *)",
@@ -162,12 +127,10 @@
       "Bash(sqlfluff lint *)",
       "Bash(sqlfluff fix *)",
       "Bash(sqlfluff parse *)",
-
       "Bash(marimo check *)",
       "Bash(marimo run *)",
       "Bash(marimo convert *)",
       "Bash(marimo edit *)",
-
       "Bash(docker ps *)",
       "Bash(docker ps)",
       "Bash(docker images *)",
@@ -176,7 +139,6 @@
       "Bash(docker inspect *)",
       "Bash(docker stats *)",
       "Bash(docker stats)",
-
       "Bash(terraform version *)",
       "Bash(terraform version)",
       "Bash(terraform fmt *)",
@@ -201,24 +163,20 @@
       "Bash(terragrunt run-all plan *)",
       "Bash(tflint *)",
       "Bash(tflint)",
-
       "Bash(aws sts get-caller-identity *)",
       "Bash(aws sts get-caller-identity)",
       "Bash(aws --version *)",
       "Bash(aws --version)",
-
       "Bash(agor daemon status *)",
       "Bash(agor daemon status)",
       "Bash(agor daemon start *)",
       "Bash(agor daemon start)",
       "Bash(agor daemon restart *)",
       "Bash(agor daemon restart)",
-
       "Bash(chezmoi status *)",
       "Bash(chezmoi status)",
       "Bash(chezmoi diff *)",
       "Bash(chezmoi diff)",
-
       "Bash(make test *)",
       "Bash(make test)",
       "Bash(make lint *)",
@@ -229,11 +187,32 @@
       "Bash(make fmt)",
       "Bash(make format *)",
       "Bash(make format)",
-
       "Bash(asp pp login *)",
       "Bash(asp pp login)",
       "Bash(asp ddp login *)",
-      "Bash(asp ddp login)"
+      "Bash(asp ddp login)",
+      "Bash(* && git status)",
+      "Bash(* && git status *)",
+      "Bash(* && git diff)",
+      "Bash(* && git diff *)",
+      "Bash(* && git log)",
+      "Bash(* && git log *)",
+      "Bash(* && git show *)",
+      "Bash(* && git branch)",
+      "Bash(* && git branch *)",
+      "Bash(git status && *)",
+      "Bash(git status * && *)",
+      "Bash(git diff && *)",
+      "Bash(git diff * && *)",
+      "Bash(git log && *)",
+      "Bash(git log * && *)",
+      "Bash(git show * && *)",
+      "Bash(git branch && *)",
+      "Bash(git branch * && *)",
+      "Bash(* && ls)",
+      "Bash(* && ls *)",
+      "Bash(ls && *)",
+      "Bash(ls * && *)"
     ],
     "deny": [
       "Bash(sudo *)",
@@ -266,5 +245,6 @@
       "Bash(cat ~/.netrc*)",
       "Bash(cat */.env*)"
     ]
-  }
+  },
+  "alwaysThinkingEnabled": true
 }

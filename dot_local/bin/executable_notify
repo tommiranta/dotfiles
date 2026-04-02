@@ -1,7 +1,0 @@
-#!/bin/bash
-
-title="${1:-Notification}"
-body="${2:-}"
-
-# Use macOS native notifications
-osascript -e "display notification \"$body\" with title \"$title\""
