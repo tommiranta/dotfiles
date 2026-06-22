@@ -237,14 +237,13 @@
       "Bash(git clean -fdx*)",
       "Bash(DROP DATABASE*)",
       "Bash(DROP TABLE*)",
-      "Bash(*password*)",
-      "Bash(*secret*)",
-      "Bash(*credential*)",
       "Bash(cat ~/.ssh/*)",
       "Bash(cat ~/.aws/credentials*)",
       "Bash(cat ~/.netrc*)",
       "Bash(cat */.env*)"
-    ]
+    ],
+    "defaultMode": "auto"
   },
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": true,
+  "skipAutoPermissionPrompt": true
 }
