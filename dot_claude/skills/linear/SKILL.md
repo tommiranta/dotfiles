@@ -142,6 +142,18 @@ If the analysis or implementation requires AWS CLI or API access:
 - Example: `aws s3 ls --profile pp-plds`
 - For boto3: `session = boto3.Session(profile_name='pp-plds')`
 
+## Code Style
+
+Be sparing with inline code comments. Add one only where the complexity genuinely
+warrants it — a non-obvious algorithm, a workaround whose reason isn't visible from
+the code, a constraint a reader would otherwise trip over.
+
+- Match the comment density of the surrounding file; don't be the outlier
+- Comment *why*, never *what* — the code already says what it does
+- No comments restating the next line, no section-divider banners, no narrating the diff
+- If a comment is needed to explain what the code does, prefer clearer naming or a
+  smaller function instead
+
 ## Checklist
 
 - [ ] Linear issue fetched and displayed
@@ -164,3 +176,4 @@ If the analysis or implementation requires AWS CLI or API access:
 - Never create a duplicate branch (always check first)
 - Never use uppercase in branch names
 - Never use slashes or underscores in branch names
+- Never add inline comments the code complexity doesn't warrant
