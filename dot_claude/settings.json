@@ -253,6 +253,9 @@
     }
   },
   "alwaysThinkingEnabled": true,
+  "tui": "fullscreen",
   "skipAutoPermissionPrompt": true,
-  "tui": "fullscreen"
+  "enabledPlugins": {
+    "platform-data-team@agent-plugins": true
+  }
 }
