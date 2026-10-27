@@ -138,9 +138,9 @@ pwd
 ## AWS Access
 
 If the analysis or implementation requires AWS CLI or API access:
-- Use AWS SSO profile: `pp-des` (also the `[default]` profile)
-- Example: `aws s3 ls --profile pp-des`
-- For boto3: `session = boto3.Session(profile_name='pp-des')`
+- Use AWS SSO profile: `pp-plds` (also the `[default]` profile)
+- Example: `aws s3 ls --profile pp-plds`
+- For boto3: `session = boto3.Session(profile_name='pp-plds')`
 
 ## Code Style
 
