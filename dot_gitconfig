@@ -20,3 +20,5 @@
     }; f"
 [commit]
 	gpgsign = true
+[user]
+	useConfigOnly = true
