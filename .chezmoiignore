@@ -1,4 +1,6 @@
 {{ if not .isWork }}
 Library/LaunchAgents/com.{{ .chezmoi.username }}.gh-notif-prune.plist
+Library/LaunchAgents/com.{{ .chezmoi.username }}.daily-standup.plist
+.local/bin/run-daily-standup.sh
 Code/gh-notif-prune
 {{ end }}
