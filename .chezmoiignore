@@ -1,0 +1,4 @@
+{{ if not .isWork }}
+Library/LaunchAgents/com.{{ .chezmoi.username }}.gh-notif-prune.plist
+Code/gh-notif-prune
+{{ end }}

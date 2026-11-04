@@ -1,0 +1,6 @@
+{{ if .isWork -}}
+# Cloned only if missing. No refreshPeriod, so apply never pulls over local edits.
+[{{ joinPath "Code" "gh-notif-prune" | quote }}]
+  type = "git-repo"
+  url = "git@df-github:vaidas-jablonskis_dft/gh-notif-prune.git"
+{{ end -}}
