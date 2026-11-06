@@ -1,6 +1,6 @@
 ---
 name: linear
-description: Start working on a Linear issue. Fetches issue details, enters plan mode, and sets up git branch workflow.
+description: Start working on a Linear issue. Fetches issue details, enters plan mode, sets up git branch workflow, and after implementation opens the PR and runs the Copilot review loop.
 argument-hint: <issue-id>
 ---
 
@@ -85,6 +85,7 @@ After syncing, use the `EnterPlanMode` tool to begin planning.
    2. Base: `upstream/master`
    3. Commits: [describe expected commits]
    4. PR target: `upstream/master`
+   5. After implementation: open the PR with `pull-requests:create-pull-request`, then run the Copilot loop
    ```
 
 6. **Open Questions** - Any assumptions or decisions needing user input
@@ -123,6 +124,18 @@ git checkout -b {branch-name} origin/{branch-name}
 git branch --show-current
 pwd
 ```
+
+## Step 7: Open the PR and Run the Copilot Loop (After Implementation)
+
+When the implementation and its local tests are done, do not stop at "code written". Finish the delivery:
+
+1. Invoke the `pull-requests:create-pull-request` skill. Pass it the Linear issue ID from Step 1, so it does not ask for one, and the branch from Step 6. It handles the pre-PR review, the draft PR, the CI watch and the Linear link. Make sure the PR is assigned to the user: `gh pr edit <n> --repo <upstream-owner>/<repo> --add-assignee @me` (skip if already assigned).
+2. Once CI is green, run the Copilot loop (`pull-requests:address-copilot-review`, which `create-pull-request` hands off to). Run it by default, whatever the `copilotReview` preference in `~/.claude/pull-requests-plugin/config.json` says. Skip it only when the user said so explicitly, in the issue context, the plan or this session ("no Copilot", "skip the review loop").
+3. If the loop ends on a 🟢 verdict (Approval recommended) or a 🔵 verdict (Needs a closer look), mark the PR ready for review with `gh pr ready <n> --repo <upstream-owner>/<repo>`. On 🔵 say in the report what Copilot wants a human to weigh.
+4. If the loop stops without converging (round cap reached with Copilot still commenting, or CI stays red), leave the PR in draft. Report why and ask before spending more rounds. Never mark ready on a red branch.
+5. End with the PR URL, the final Copilot verdict, the decision ledger the loop prints, and whether the PR is draft or ready.
+
+When the user said to skip the Copilot loop, still do steps 1 and 5, and leave the PR in draft unless they asked for ready.
 
 ## Branch Naming Rules
 
@@ -164,6 +177,10 @@ the code, a constraint a reader would otherwise trip over.
 - [ ] Plan approved by user
 - [ ] Worktree created (isolated from other sessions)
 - [ ] Feature branch named correctly
+- [ ] After implementation: PR opened through `create-pull-request`
+- [ ] PR assigned to the user
+- [ ] Copilot loop run (unless the user said to skip it)
+- [ ] PR marked ready if the loop converged (🟢 or 🔵), otherwise left in draft with the reason reported
 
 ## Never Do These
 
@@ -177,3 +194,6 @@ the code, a constraint a reader would otherwise trip over.
 - Never use uppercase in branch names
 - Never use slashes or underscores in branch names
 - Never add inline comments the code complexity doesn't warrant
+- Never end the task at "implementation done" without opening the PR (Step 7)
+- Never skip the Copilot loop unless the user explicitly said to
+- Never mark a PR ready while the loop has not converged or CI is red
